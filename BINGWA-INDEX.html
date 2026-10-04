@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingwa Sokoni Daraja - Shamba hadi Soko</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
+body{background:#070a0e;color:#e8ffe8;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;background:radial-gradient(600px at 10% 10%, #00ff88aa 0%, transparent 50%),radial-gradient(500px at 90% 80%, #00cc66aa 0%, transparent 50%),#070a0e;z-index:-1}
+header{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff12;backdrop-filter:blur(20px);background:#00000066;position:sticky;top:0;z-index:10}
+.logo{font-weight:800;font-size:22px;letter-spacing:-0.5px}.logo span{color:#00ff88}
+.live{font-size:12px;padding:6px 12px;border-radius:20px;background:#00ff8822;border:1px solid #00ff8844;color:#00ff88}
+.tabs{max-width:1100px;margin:20px auto;display:flex;gap:10px;padding:0 20px}
+.tab{flex:1;padding:14px;border-radius:14px;border:1px solid #ffffff15;background:#ffffff08;text-align:center;cursor:pointer;font-weight:600;transition:.2s}
+.tab.active{background:#00ff88;color:#000;border-color:#00ff88;box-shadow:0 0 30px #00ff8844}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 100px}
+.card{background:linear-gradient(180deg,#ffffff10,#ffffff05);border:1px solid #ffffff12;border-radius:20px;padding:20px;backdrop-filter:blur(20px)}
+.chat{height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding-right:6px}
+.msg{max-width:80%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5}
+.user{align-self:flex-end;background:#00ff88;color:#000;border-bottom-right-radius:4px}
+.bot{align-self:flex-start;background:#ffffff10;border:1px solid #ffffff12;border-bottom-left-radius:4px}
+.inputRow{display:flex;gap:10px;margin-top:14px}
+.inputRow input{flex:1;padding:14px 18px;border-radius:14px;border:1px solid #ffffff15;background:#00000066;color:#fff;outline:none}
+.inputRow button{padding:14px 22px;border-radius:14px;border:0;background:#00ff88;color:#000;font-weight:800;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.item{background:#ffffff08;border:1px solid #ffffff12;border-radius:16px;padding:14px;transition:.2s}
+.item:hover{transform:translateY(-3px);border-color:#00ff8855}
+.price{color:#00ff88;font-weight:800;margin:6px 0}
+.btn{width:100%;padding:10px;border-radius:10px;border:0;background:#00ff88;color:#000;font-weight:700;cursor:pointer;margin-top:8px}
+.tag{font-size:11px;padding:3px 8px;border-radius:20px;background:#ffffff12;display:inline-block;margin-bottom:6px}
+.footer{text-align:center;padding:30px;color:#ffffff55;font-size:12px}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<header>
+<div class="logo">BINGWA <span>SOKONI</span> DARAJA</div>
+<div class="live">● LIVE • bingwa-daraja.vercel.app</div>
+</header>
+<div class="tabs">
+<div class="tab active" onclick="switchTab('daraja')" id="t-daraja">🌉 DARAJA AI</div>
+<div class="tab" onclick="switchTab('sokoni')" id="t-sokoni">🛒 SOKONI</div>
+</div>
+<div class="wrap">
+<div id="daraja" class="card">
+<div style="margin-bottom:14px"><b style="font-size:18px">Mambo mkuu Ezra! 🎉</b><br><span style="color:#ffffff88;font-size:13px">Mimi ni Bingwa - Daraja lako kutoka shamba hadi soko. Uliza chochote!</span></div>
+<div class="chat" id="chat">
+<div class="msg bot">Sasa mkuu! Niko tayari! 🚀<br>Unaweza kuuliza:<br>• Bei ya mahindi leo?<br>• Natafuta mbolea ya DAP<br>• Jinsi ya kukuza mauzo sokoni?</div>
+</div>
+<div class="inputRow">
+<input id="q" placeholder="Andika hapa... ex: Bei ya maharagwe?" onkeydown="if(event.key==='Enter')ask()">
+<button onclick="ask()">Tuma 🚀</button>
+</div>
+</div>
+<div id="sokoni" class="card" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><b style="font-size:18px">Sokoni - Bidhaa Fresh</b><span style="font-size:12px;color:#ffffff88">📍 Kangema • Delivery 24h</span></div>
+<div class="grid" id="grid"></div>
+</div>
+</div>
+<div class="footer">Bingwa Sokoni Daraja Running • Till 1767515 • Built by Ezra Kiplimo • Kangema, Central KE • 4:29 AM</div>
+<script>
+const products=[
+{name:"Mahindi - Gunia 90kg",price:"KES 3,200",tag:"🌽 Mazao",loc:"Kangema"},
+{name:"Mbolea DAP 50kg",price:"KES 3,500",tag:"🌱 Mbolea",loc:"Murang'a"},
+{name:"Mbegu za Maharagwe",price:"KES 450 / kg",tag:"🌾 Mbegu",loc:"Karatina"},
+{name:"Kuku wa Kienyeji",price:"KES 800",tag:"🐔 Mifugo",loc:"Kangema"},
+{name:"Maziwa Fresh 1L",price:"KES 60",tag:"🥛 Maziwa",loc:"Othaya"},
+{name:"Viazi Mviringo 90kg",price:"KES 2,800",tag:"🥔 Mazao",loc:"Nyandarua"},
+];
+function renderSoko(){document.getElementById('grid').innerHTML=products.map(p=>`<div class="item"><div class="tag">${p.tag} • ${p.loc}</div><div style="font-weight:700">${p.name}</div><div class="price">${p.price}</div><button class="btn" onclick="order('${p.name}')">Nunua via WhatsApp</button></div>`).join('')}
+function switchTab(t){document.getElementById('daraja').style.display=t==='daraja'?'block':'none';document.getElementById('sokoni').style.display=t==='sokoni'?'block':'none';document.getElementById('t-daraja').classList.toggle('active',t==='daraja');document.getElementById('t-sokoni').classList.toggle('active',t==='sokoni');if(t==='sokoni')renderSoko()}
+function order(name){window.open(`https://wa.me/254700000000?text=Mambo Bingwa! Natafuta ${encodeURIComponent(name)}`,'_blank')}
+function ask(){
+const input=document.getElementById('q');const v=input.value.trim();if(!v)return;
+const chat=document.getElementById('chat');chat.innerHTML+=`<div class="msg user">${v}</div>`;input.value='';
+const responses={
+"mahindi":"Bei ya mahindi leo Kangema ni KES 3,200 per gunia 90kg mkuu! Iko juu kidogo sababu ya mvua. Unataka nikupatie suppliers?",
+"mbolea":"Mbolea DAP iko KES 3,500, UREA KES 3,200. Niko na stock Murang'a. Delivery ni KES 300 hadi Kangema. Unataka ngapi?",
+"mauzo":"Mkuu, siri ya mauzo ni 3: 1) Piga picha kali za bidhaa 2) Weka bei ya Kangema sio Nairobi 3) Tumia WhatsApp Status kila asubuhi 6am. Nikupe template?",
+"maharagwe":"Maharagwe rose coco - KES 120 per kg, Mwitemania KES 90. Ziko Karatina fresh!",
+"bei":"Sokoni leo: Mahindi 3200, Maharagwe 120/kg, Viazi 2800/gunia, Maziwa 60/L. Unataka kuuza au kununua mkuu?"
+};
+setTimeout(()=>{
+let r="Poa mkuu! Nimekuelewa - '"+v+"' 🔥\n\nKama ni bei, niko na update live kutoka Kangema, Karatina, Murang'a. Kama ni kuuza, niko tayari kuku-connect na wanunuzi 200+.\n\nSemaje, nikusaidie na nini hasa? Bei, supplier, au customer?";
+const low=v.toLowerCase();
+for(let k in responses){if(low.includes(k)){r=responses[k];break}}
+chat.innerHTML+=`<div class="msg bot">${r}</div>`;chat.scrollTop=chat.scrollHeight;
+},600);
+chat.scrollTop=chat.scrollHeight;
+}
+renderSoko();
+</script>
+</body>
+</html>
