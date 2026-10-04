@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingwa Sokoni Daraja | Murang'a</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060a0f;color:#eaffea;font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+.hero{min-height:100vh;background:radial-gradient(1200px 600px at 20% -10%,#00ff88 0%,transparent 60%),radial-gradient(900px 500px at 90% 10%,#00d5ff 0%,transparent 55%),#060a0f;padding:18px}
+.nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:10px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px);border-radius:999px}
+.logo{font-family:Outfit;font-weight:800;font-size:18px;letter-spacing:-.5px}
+.logo span{color:#00ff88}
+.badge{font-size:12px;background:#00ff88;color:#000;padding:6px 12px;border-radius:999px;font-weight:800}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 10px 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.h1{font-family:Outfit;font-size:clamp(36px,7vw,78px);line-height:.9;letter-spacing:-2px;font-weight:800}
+.h1 em{font-style:normal;color:#00ff88;text-shadow:0 0 30px #00ff88}
+.sub{margin:18px 0 22px;font-size:18px;color:#b9ffcb;max-width:560px;line-height:1.5}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:16px}
+.card h3{font-family:Outfit;font-size:22px;margin-bottom:4px}
+.card p{font-size:13px;color:#a8cbb1}
+.bigCard{background:linear-gradient(180deg,rgba(0,255,136,.18),rgba(255,255,255,.05));border:1px solid rgba(0,255,136,.35);border-radius:24px;padding:22px;position:relative;overflow:hidden}
+.bigCard:before{content:'';position:absolute;top:-40%;right:-30%;width:80%;height:80%;background:radial-gradient(circle,#00ff88,transparent 70%);opacity:.3}
+.price{font-family:Outfit;font-size:54px;font-weight:800;margin:8px 0}
+.btn{display:inline-block;background:#00ff88;color:#000;padding:14px 22px;border-radius:999px;font-weight:800;text-decoration:none;margin-top:10px;box-shadow:0 10px 30px rgba(0,255,136,.35)}
+.stats{display:flex;gap:18px;margin-top:18px;flex-wrap:wrap}
+.stat{font-size:12px;color:#8fbf9a}
+.stat b{display:block;font-size:20px;color:#fff;font-family:Outfit}
+.footer{text-align:center;padding:30px;color:#6a8a73;font-size:12px}
+.till{margin-top:12px;display:inline-block;background:#111;padding:8px 14px;border-radius:10px;border:1px solid #222;font-family:monospace;color:#00ff88}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="nav"><div class="logo">BINGWA <span>SOKONI</span> DARAJA</div><div class="badge">LIVE • MURANG'A</div></div>
+<div class="wrap">
+<div>
+<div class="h1">BINGWA WA<br><em>SOKONI</em><br>DARAJA</div>
+<p class="sub">Soko la kwanza la Daraja - Kangema, Murang'a. Chakula freshi, bei ya bingwa, delivery chap chap. Lipa na Till au M-Pesa.</p>
+<div class="cards">
+<div class="card"><h3>🥬 Mboga Freshi</h3><p>From shamba direct - daily harvest Kangema</p></div>
+<div class="card"><h3>🚚 Delivery 30min</h3><p>Daraja - Kangema Town - Murang'a</p></div>
+<div class="card"><h3>💸 Lipa Till</h3><p>Till 1767515 - Instant confirmation</p></div>
+<div class="card"><h3>⭐ Bingwa Points</h3><p>Nunua 500 = 50 points = discount</p></div>
+</div>
+<div class="stats">
+<div class="stat"><b>500+</b>Wateja leo</div>
+<div class="stat"><b>4.9★</b>Rating</div>
+<div class="stat"><b>06:00-21:00</b>Open</div>
+</div>
+<div class="till">TILL: 1767515 • BINGWA SOKONI DARAJA</div>
+</div>
+<div>
+<div class="bigCard">
+<div style="font-size:12px;letter-spacing:2px;opacity:.7">LEO KWA BINGWA</div>
+<div class="price">BEI YA<br>BINGWA</div>
+<p style="color:#b8ffca">Maharagwe, Mchele, Mafuta, Sukari - bei ya jumla, rejareja ndogo. Ukichukua basket kubwa, discount ya Bingwa!</p>
+<a class="btn" href="https://wa.me/254700000000?text=Nataka%20kuagiza%20Bingwa%20Daraja">Agiza WhatsApp →</a>
+<p style="margin-top:14px;font-size:12px;color:#7aa887">📍 Daraja Market, Kangema Road, Murang'a County. 4:58 AM - Bingwa hachoki!</p>
+</div>
+<div class="card" style="margin-top:12px;background:#000">
+<h3 style="color:#00ff88">🔥 OFA YA 5AM - Wale wa asubuhi!</h3>
+<p>Ukiamka mapema na Ezra - unapata chai + mkate free ukinunua juu ya 1000! Valid till 7AM</p>
+</div>
+</div>
+</div>
+<div class="footer">Bingwa Sokoni Daraja Running • Kangema, Central Province, KE • 2026 • Built by Ezra at 5AM 🔥</div>
+</div>
+</body>
+</html>
